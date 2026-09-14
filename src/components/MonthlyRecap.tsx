@@ -264,16 +264,16 @@ export const MonthlyRecap: React.FC<MonthlyRecapProps> = ({
           </div>
 
           <div className="bg-slate-800/80 p-4 rounded-xl border border-slate-700/60">
-            <span className="text-xs text-slate-400 font-medium">Komposisi Nopol Bangli vs Luar</span>
+            <span className="text-xs text-slate-400 font-medium">Komposisi Nopol Gianyar vs Luar</span>
             <div className="flex items-center justify-between mt-2">
               <div>
-                <div className="text-xs text-sky-400 font-bold">Bangli (P*)</div>
+                <div className="text-xs text-sky-400 font-bold">Gianyar (L*)</div>
                 <div className="text-base font-extrabold text-white">{formatNumber(monthTotals.bangliUnit)} Unit</div>
                 <div className="text-[11px] text-slate-400">{formatRupiah(monthTotals.bangliRp)}</div>
               </div>
               <div className="h-8 w-[1px] bg-slate-700" />
               <div>
-                <div className="text-xs text-amber-400 font-bold">Luar Bangli</div>
+                <div className="text-xs text-amber-400 font-bold">Luar Gianyar</div>
                 <div className="text-base font-extrabold text-white">{formatNumber(monthTotals.luarUnit)} Unit</div>
                 <div className="text-[11px] text-slate-400">{formatRupiah(monthTotals.luarRp)}</div>
               </div>
@@ -307,8 +307,8 @@ export const MonthlyRecap: React.FC<MonthlyRecapProps> = ({
                 <th className="px-3 py-3 border-r border-slate-800 w-12">RANK</th>
                 <th className="px-4 py-3 border-r border-slate-800 text-left min-w-[200px]">KANTOR DESA</th>
                 <th className="px-3 py-3 border-r border-slate-800 w-24">FREKUENSI</th>
-                <th className="px-3 py-3 border-r border-slate-800 bg-sky-950 text-sky-200" colSpan={2}>REALISASI BANGLI</th>
-                <th className="px-3 py-3 border-r border-slate-800 bg-amber-950 text-amber-200" colSpan={2}>REALISASI LUAR BANGLI</th>
+                <th className="px-3 py-3 border-r border-slate-800 bg-sky-950 text-sky-200" colSpan={2}>REALISASI GIANYAR</th>
+                <th className="px-3 py-3 border-r border-slate-800 bg-amber-950 text-amber-200" colSpan={2}>REALISASI LUAR GIANYAR</th>
                 <th className="px-3 py-3 border-r border-slate-800 bg-emerald-950 text-emerald-200" colSpan={2}>TOTAL REKAP DESA</th>
                 <th className="px-3 py-3 w-28">KONTRIBUSI</th>
               </tr>
@@ -432,10 +432,10 @@ export const MonthlyRecap: React.FC<MonthlyRecapProps> = ({
               <tr className="bg-slate-800 text-white font-semibold text-center uppercase tracking-wider">
                 <th className="px-4 py-3 text-left">BULAN &amp; TAHUN</th>
                 <th className="px-3 py-3">JUMLAH PELAYANAN</th>
-                <th className="px-3 py-3">BANGLI (UNIT)</th>
-                <th className="px-3 py-3">BANGLI (RP)</th>
-                <th className="px-3 py-3">LUAR BANGLI (UNIT)</th>
-                <th className="px-3 py-3">LUAR BANGLI (RP)</th>
+                <th className="px-3 py-3">GIANYAR (UNIT)</th>
+                <th className="px-3 py-3">GIANYAR (RP)</th>
+                <th className="px-3 py-3">LUAR GIANYAR (UNIT)</th>
+                <th className="px-3 py-3">LUAR GIANYAR (RP)</th>
                 <th className="px-3 py-3 bg-emerald-950 text-emerald-200">TOTAL UNIT</th>
                 <th className="px-3 py-3 bg-emerald-950 text-emerald-200">TOTAL REALISASI RP</th>
                 <th className="px-3 py-3">CAPAIAN TARGET</th>

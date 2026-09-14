@@ -41,16 +41,16 @@ export const SummaryCards: React.FC<SummaryCardsProps> = ({ entries, selectedMon
           </div>
           <div className="flex items-center gap-1.5 mt-1 text-xs text-slate-500">
             <TrendingUp className="w-3.5 h-3.5 text-emerald-500" />
-            <span>Gabungan Bangli &amp; Luar Bangli</span>
+            <span>Gabungan Gianyar &amp; Luar Gianyar</span>
           </div>
         </div>
       </div>
 
-      {/* Realisasi Nopol Bangli */}
+      {/* Realisasi Nopol Gianyar */}
       <div className="bg-white rounded-xl p-4 shadow-sm border border-slate-200/80 hover:shadow-md transition-shadow">
         <div className="flex items-center justify-between">
           <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">
-            Nopol Bangli (DK...P*)
+            Nopol Gianyar (DK...L*)
           </span>
           <div className="p-2 rounded-lg bg-sky-50 text-sky-600 border border-sky-100">
             <Car className="w-5 h-5" />
@@ -70,11 +70,11 @@ export const SummaryCards: React.FC<SummaryCardsProps> = ({ entries, selectedMon
         </div>
       </div>
 
-      {/* Realisasi Nopol Luar Bangli */}
+      {/* Realisasi Nopol Luar Gianyar */}
       <div className="bg-white rounded-xl p-4 shadow-sm border border-slate-200/80 hover:shadow-md transition-shadow">
         <div className="flex items-center justify-between">
           <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">
-            Nopol Luar Bangli
+            Nopol Luar Gianyar
           </span>
           <div className="p-2 rounded-lg bg-amber-50 text-amber-600 border border-amber-100">
             <Layers className="w-5 h-5" />
@@ -115,12 +115,12 @@ export const SummaryCards: React.FC<SummaryCardsProps> = ({ entries, selectedMon
             <div 
               className="bg-sky-500 h-full" 
               style={{ width: `${bangliUnitPct}%` }} 
-              title={`Bangli: ${bangliUnitPct}%`}
+              title={`Gianyar: ${bangliUnitPct}%`}
             />
             <div 
               className="bg-amber-500 h-full" 
               style={{ width: `${luarUnitPct}%` }} 
-              title={`Luar Bangli: ${luarUnitPct}%`}
+              title={`Luar Gianyar: ${luarUnitPct}%`}
             />
           </div>
         </div>

@@ -122,14 +122,14 @@ export const DailyTable: React.FC<DailyTableProps> = ({
         'NO': idx + 1,
         'TANGGAL': e.tanggal,
         'KANTOR DESA': e.kantorDesa,
-        'REALISASI BANGLI (NOPOL)': e.realisasiBangliNopol,
-        'REALISASI BANGLI (RP)': e.realisasiBangliRp,
-        'REALISASI LUAR BANGLI (NOPOL)': e.realisasiLuarNopol,
-        'REALISASI LUAR BANGLI (RP)': e.realisasiLuarRp,
-        'JML BANGLI (UNIT)': jmlBangliUnit,
-        'JML BANGLI (RP)': jmlBangliRp,
-        'JML LUAR BANGLI (UNIT)': jmlLuarUnit,
-        'JML LUAR BANGLI (RP)': jmlLuarRp,
+        'REALISASI GIANYAR (NOPOL)': e.realisasiBangliNopol,
+        'REALISASI GIANYAR (RP)': e.realisasiBangliRp,
+        'REALISASI LUAR GIANYAR (NOPOL)': e.realisasiLuarNopol,
+        'REALISASI LUAR GIANYAR (RP)': e.realisasiLuarRp,
+        'JML GIANYAR (UNIT)': jmlBangliUnit,
+        'JML GIANYAR (RP)': jmlBangliRp,
+        'JML LUAR GIANYAR (UNIT)': jmlLuarUnit,
+        'JML LUAR GIANYAR (RP)': jmlLuarRp,
         'TOTAL (UNIT)': totalUnit,
         'TOTAL (RP)': totalRp,
         'PETUGAS': e.petugas || '-',
@@ -257,16 +257,16 @@ export const DailyTable: React.FC<DailyTableProps> = ({
                 KANTOR DESA
               </th>
               <th colSpan={2} className="px-3 py-2 border-r border-slate-800 bg-sky-950 text-sky-200">
-                REALISASI NOPOL BANGLI
+                REALISASI NOPOL GIANYAR
               </th>
               <th colSpan={2} className="px-3 py-2 border-r border-slate-800 bg-amber-950 text-amber-200">
-                REALISASI NOPOL LUAR BANGLI
+                REALISASI NOPOL LUAR GIANYAR
               </th>
               <th colSpan={2} className="px-3 py-2 border-r border-slate-800 bg-slate-950 text-sky-300">
-                JML BANGLI
+                JML GIANYAR
               </th>
               <th colSpan={2} className="px-3 py-2 border-r border-slate-800 bg-slate-950 text-amber-300">
-                JML LUAR BANGLI
+                JML LUAR GIANYAR
               </th>
               <th colSpan={2} className="px-3 py-2 border-r border-slate-800 bg-emerald-950 text-emerald-200">
                 TOTAL
@@ -278,19 +278,19 @@ export const DailyTable: React.FC<DailyTableProps> = ({
 
             {/* Sub-Header Columns */}
             <tr className="bg-slate-800 text-slate-200 font-medium text-center border-b border-slate-700">
-              {/* Realisasi Bangli */}
+              {/* Realisasi Gianyar */}
               <th className="px-2 py-2 border-r border-slate-700 bg-sky-900/60 min-w-[60px]">Nopol</th>
               <th className="px-3 py-2 border-r border-slate-700 bg-sky-900/60 min-w-[110px]">Rp</th>
 
-              {/* Realisasi Luar Bangli */}
+              {/* Realisasi Luar Gianyar */}
               <th className="px-2 py-2 border-r border-slate-700 bg-amber-900/60 min-w-[60px]">Nopol</th>
               <th className="px-3 py-2 border-r border-slate-700 bg-amber-900/60 min-w-[110px]">Rp</th>
 
-              {/* Jml Bangli */}
+              {/* Jml Gianyar */}
               <th className="px-2 py-2 border-r border-slate-700 bg-slate-800 min-w-[60px]">Unit</th>
               <th className="px-3 py-2 border-r border-slate-700 bg-slate-800 min-w-[110px]">Rp</th>
 
-              {/* Jml Luar Bangli */}
+              {/* Jml Luar Gianyar */}
               <th className="px-2 py-2 border-r border-slate-700 bg-slate-800 min-w-[60px]">Unit</th>
               <th className="px-3 py-2 border-r border-slate-700 bg-slate-800 min-w-[110px]">Rp</th>
 

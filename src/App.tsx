@@ -257,7 +257,7 @@ export default function App() {
         id: entryId,
         no: entries.length + 1,
         tanggal: data.tanggal || new Date().toISOString().substring(0, 10),
-        kantorDesa: data.kantorDesa || 'Kantor Desa Batur Tengah',
+        kantorDesa: data.kantorDesa || 'Kantor Desa Lebih',
         realisasiBangliNopol: data.realisasiBangliNopol || 0,
         realisasiBangliRp: data.realisasiBangliRp || 0,
         realisasiLuarNopol: data.realisasiLuarNopol || 0,

@@ -172,10 +172,10 @@ export const PrintReportModal: React.FC<PrintReportModalProps> = ({
                   <th rowSpan={2} className="border border-slate-900 p-1.5 w-8">NO</th>
                   <th rowSpan={2} className="border border-slate-900 p-1.5 whitespace-nowrap">TANGGAL</th>
                   <th rowSpan={2} className="border border-slate-900 p-1.5 text-left min-w-[150px]">KANTOR DESA</th>
-                  <th colSpan={2} className="border border-slate-900 p-1 bg-slate-300">REALISASI NOPOL BANGLI</th>
-                  <th colSpan={2} className="border border-slate-900 p-1 bg-slate-300">REALISASI NOPOL LUAR BANGLI</th>
-                  <th colSpan={2} className="border border-slate-900 p-1 bg-slate-200">JML BANGLI</th>
-                  <th colSpan={2} className="border border-slate-900 p-1 bg-slate-200">JML LUAR BANGLI</th>
+                  <th colSpan={2} className="border border-slate-900 p-1 bg-slate-300">REALISASI NOPOL GIANYAR</th>
+                  <th colSpan={2} className="border border-slate-900 p-1 bg-slate-300">REALISASI NOPOL LUAR GIANYAR</th>
+                  <th colSpan={2} className="border border-slate-900 p-1 bg-slate-200">JML GIANYAR</th>
+                  <th colSpan={2} className="border border-slate-900 p-1 bg-slate-200">JML LUAR GIANYAR</th>
                   <th colSpan={2} className="border border-slate-900 p-1 bg-slate-300">TOTAL</th>
                 </tr>
                 <tr className="bg-slate-100 text-center font-semibold border-b border-slate-900">

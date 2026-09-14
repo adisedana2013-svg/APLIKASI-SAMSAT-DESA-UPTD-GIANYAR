@@ -50,8 +50,8 @@ export const VehicleDetailTable: React.FC<VehicleDetailTableProps> = ({
   const [merkModel, setMerkModel] = useState('Honda Vario');
   const [nominalTotal, setNominalTotal] = useState<number | ''>('');
 
-  // Auto detect if Bangli plate
-  const isBangliDetected = platNomor.toUpperCase().includes(' P') || platNomor.toUpperCase().endsWith('P');
+  // Auto detect if Gianyar plate (Bali region code for Gianyar is L)
+  const isBangliDetected = platNomor.toUpperCase().includes(' L') || platNomor.toUpperCase().endsWith('L') || platNomor.toUpperCase().includes(' P') || platNomor.toUpperCase().endsWith('P');
 
   // Filter logic
   const filteredVehicles = useMemo(() => {
@@ -192,11 +192,11 @@ export const VehicleDetailTable: React.FC<VehicleDetailTableProps> = ({
             <span className="text-amber-400 font-extrabold">{filteredVehicles.length} Unit</span>
           </div>
           <div className="bg-sky-100 text-sky-900 border border-sky-200 px-2.5 py-1 rounded-lg font-bold flex items-center gap-1">
-            <span>Plat Bangli:</span>
+            <span>Plat Gianyar:</span>
             <span className="text-sky-700 font-black">{bangliCount} Unit</span>
           </div>
           <div className="bg-amber-100 text-amber-900 border border-amber-200 px-2.5 py-1 rounded-lg font-bold flex items-center gap-1">
-            <span>Plat Luar:</span>
+            <span>Plat Luar Gianyar:</span>
             <span className="text-amber-700 font-black">{luarCount} Unit</span>
           </div>
           <div className="bg-emerald-100 text-emerald-950 border border-emerald-200 px-3 py-1 rounded-lg font-black ml-auto">
@@ -262,8 +262,8 @@ export const VehicleDetailTable: React.FC<VehicleDetailTableProps> = ({
                 className="bg-transparent font-semibold text-slate-900 focus:outline-hidden cursor-pointer"
               >
                 <option value="all">Semua Plat</option>
-                <option value="bangli">Bangli (DK..P*)</option>
-                <option value="luar">Luar Bangli</option>
+                <option value="bangli">Gianyar (DK..L*)</option>
+                <option value="luar">Luar Gianyar</option>
               </select>
             </div>
 
@@ -333,11 +333,11 @@ export const VehicleDetailTable: React.FC<VehicleDetailTableProps> = ({
                     <td className="px-3 py-2.5 text-center">
                       {v.isBangli ? (
                         <span className="px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-sky-100 text-sky-800 border border-sky-200">
-                          BANGLI (DK..P*)
+                          GIANYAR (DK..L*)
                         </span>
                       ) : (
                         <span className="px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-amber-100 text-amber-800 border border-amber-200">
-                          LUAR BANGLI
+                          LUAR GIANYAR
                         </span>
                       )}
                     </td>
@@ -481,13 +481,13 @@ export const VehicleDetailTable: React.FC<VehicleDetailTableProps> = ({
                   <input
                     type="text"
                     required
-                    placeholder="DK 3812 PA"
+                    placeholder="DK 3812 LA"
                     value={platNomor}
                     onChange={(e) => setPlatNomor(e.target.value)}
                     className="w-full px-3 py-2 border rounded-lg font-mono font-bold uppercase"
                   />
                   <span className="text-[10px] text-slate-500 mt-0.5 block">
-                    {isBangliDetected ? '✓ Terdeteksi Plat Bangli' : 'ℹ Terdeteksi Plat Luar Bangli'}
+                    {isBangliDetected ? '✓ Terdeteksi Plat Gianyar' : 'ℹ Terdeteksi Plat Luar Gianyar'}
                   </span>
                 </div>
 

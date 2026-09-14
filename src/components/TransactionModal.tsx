@@ -94,10 +94,10 @@ export const TransactionModal: React.FC<TransactionModalProps> = ({
     }
   }, [initialData, isOpen, listKantorDesa]);
 
-  // Handle adding Bangli vehicle item
+  // Handle adding Bangli/Gianyar vehicle item
   const handleAddBangliVehicle = () => {
     if (!tempBangliPlat.trim() || tempBangliPlat.trim() === 'DK') {
-      alert('Mohon isi Plat Nomor Bangli yang valid!');
+      alert('Mohon isi Plat Nomor Gianyar yang valid!');
       return;
     }
     const nominal = Number(tempBangliRp) || 0;
@@ -105,7 +105,7 @@ export const TransactionModal: React.FC<TransactionModalProps> = ({
       id: 'v-bangli-' + Date.now() + Math.random().toString(36).substr(2, 4),
       platNomor: tempBangliPlat.toUpperCase().trim(),
       nominalRp: nominal,
-      namaPemilik: tempBangliNama.trim() || 'Wajib Pajak (Bangli)',
+      namaPemilik: tempBangliNama.trim() || 'Wajib Pajak (Gianyar)',
       jenisKendaraan: tempBangliJenis,
       isBangli: true
     };
@@ -119,7 +119,7 @@ export const TransactionModal: React.FC<TransactionModalProps> = ({
 
     // Reset inputs
     setTempBangliPlat('DK ');
-    setTempBangliRp(850000);
+    setTempBangliRp('');
     setTempBangliNama('');
   };
 
@@ -130,10 +130,10 @@ export const TransactionModal: React.FC<TransactionModalProps> = ({
     setRealisasiBangliRp(newBangliList.reduce((sum, v) => sum + v.nominalRp, 0));
   };
 
-  // Handle adding Luar Bangli vehicle item
+  // Handle adding Luar Gianyar vehicle item
   const handleAddLuarVehicle = () => {
     if (!tempLuarPlat.trim() || tempLuarPlat.trim() === 'DK') {
-      alert('Mohon isi Plat Nomor Luar Bangli yang valid!');
+      alert('Mohon isi Plat Nomor Luar Gianyar yang valid!');
       return;
     }
     const nominal = Number(tempLuarRp) || 0;
@@ -141,7 +141,7 @@ export const TransactionModal: React.FC<TransactionModalProps> = ({
       id: 'v-luar-' + Date.now() + Math.random().toString(36).substr(2, 4),
       platNomor: tempLuarPlat.toUpperCase().trim(),
       nominalRp: nominal,
-      namaPemilik: tempLuarNama.trim() || 'Wajib Pajak (Luar Bangli)',
+      namaPemilik: tempLuarNama.trim() || 'Wajib Pajak (Luar Gianyar)',
       jenisKendaraan: tempLuarJenis,
       isBangli: false
     };
@@ -155,7 +155,7 @@ export const TransactionModal: React.FC<TransactionModalProps> = ({
 
     // Reset inputs
     setTempLuarPlat('DK ');
-    setTempLuarRp(800000);
+    setTempLuarRp('');
     setTempLuarNama('');
   };
 
@@ -322,29 +322,29 @@ export const TransactionModal: React.FC<TransactionModalProps> = ({
 
           </div>
 
-          {/* Section: Realisasi Nopol Bangli */}
+          {/* Section: Realisasi Nopol Gianyar */}
           <div className="bg-sky-50/80 p-4 rounded-xl border border-sky-200 space-y-3">
             <div className="flex items-center justify-between">
               <h4 className="text-xs font-extrabold text-sky-900 uppercase tracking-wider flex items-center gap-1.5">
                 <Car className="w-4 h-4 text-sky-600" />
-                <span>REALISASI NOPOL BANGLI (Plat Kode Bangli)</span>
+                <span>REALISASI NOPOL GIANYAR (Plat Kode Gianyar)</span>
               </h4>
               <span className="text-[11px] font-bold text-sky-700 bg-sky-100 px-2 py-0.5 rounded-full border border-sky-300">
                 {bangliVehicles.length} Nopol Terinput
               </span>
             </div>
 
-            {/* Sub-form input single Nopol Bangli */}
+            {/* Sub-form input single Nopol Gianyar */}
             <div className="bg-white p-3 rounded-lg border border-sky-200 space-y-2">
               <span className="text-[11px] font-bold text-sky-900 block">
-                + Input Rincian Nopol Bangli (Otomatis masuk ke Rincian Kendaraan):
+                + Input Rincian Nopol Gianyar (Otomatis masuk ke Rincian Kendaraan):
               </span>
               <div className="grid grid-cols-1 sm:grid-cols-12 gap-2 items-end">
                 <div className="sm:col-span-3">
                   <label className="block text-[10px] font-semibold text-slate-600 mb-0.5">Plat Nomor (Nopol)</label>
                   <input
                     type="text"
-                    placeholder="DK 3412 PAB"
+                    placeholder="DK 3412 LA"
                     value={tempBangliPlat}
                     onChange={(e) => setTempBangliPlat(e.target.value)}
                     className="w-full px-2.5 py-1.5 text-xs bg-slate-50 border border-slate-300 rounded font-mono font-bold uppercase"
@@ -384,10 +384,10 @@ export const TransactionModal: React.FC<TransactionModalProps> = ({
               </div>
             </div>
 
-            {/* Added Bangli Vehicles Badge List */}
+            {/* Added Gianyar Vehicles Badge List */}
             {bangliVehicles.length > 0 && (
               <div className="bg-sky-100/60 p-2.5 rounded-lg border border-sky-200 space-y-1.5">
-                <span className="text-[11px] font-bold text-sky-900 block">Daftar Nopol Bangli Terdaftar:</span>
+                <span className="text-[11px] font-bold text-sky-900 block">Daftar Nopol Gianyar Terdaftar:</span>
                 <div className="flex flex-wrap gap-2 max-h-32 overflow-y-auto p-1">
                   {bangliVehicles.map((item) => (
                     <div key={item.id} className="inline-flex items-center gap-1.5 bg-white border border-sky-300 px-2.5 py-1 rounded-md text-xs shadow-2xs">
@@ -413,7 +413,7 @@ export const TransactionModal: React.FC<TransactionModalProps> = ({
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
               <div>
                 <label className="block text-xs font-semibold text-slate-700 mb-1">
-                  Jumlah Nopol Bangli (Unit) *
+                  Jumlah Nopol Gianyar (Unit) *
                 </label>
                 <input
                   type="number"
@@ -428,7 +428,7 @@ export const TransactionModal: React.FC<TransactionModalProps> = ({
 
               <div>
                 <label className="block text-xs font-semibold text-slate-700 mb-1">
-                  Realisasi Nominal Bangli (Rp) *
+                  Realisasi Nominal Gianyar (Rp) *
                 </label>
                 <input
                   type="number"
@@ -446,22 +446,22 @@ export const TransactionModal: React.FC<TransactionModalProps> = ({
             </div>
           </div>
 
-          {/* Section: Realisasi Nopol Luar Bangli */}
+          {/* Section: Realisasi Nopol Luar Gianyar */}
           <div className="bg-amber-50/80 p-4 rounded-xl border border-amber-200 space-y-3">
             <div className="flex items-center justify-between">
               <h4 className="text-xs font-extrabold text-amber-900 uppercase tracking-wider flex items-center gap-1.5">
                 <Car className="w-4 h-4 text-amber-600" />
-                <span>REALISASI NOPOL LUAR BANGLI (Plat Luar Bangli)</span>
+                <span>REALISASI NOPOL LUAR GIANYAR (Plat Luar Gianyar)</span>
               </h4>
               <span className="text-[11px] font-bold text-amber-700 bg-amber-100 px-2 py-0.5 rounded-full border border-amber-300">
                 {luarVehicles.length} Nopol Terinput
               </span>
             </div>
 
-            {/* Sub-form input single Nopol Luar Bangli */}
+            {/* Sub-form input single Nopol Luar Gianyar */}
             <div className="bg-white p-3 rounded-lg border border-amber-200 space-y-2">
               <span className="text-[11px] font-bold text-amber-900 block">
-                + Input Rincian Nopol Luar Bangli (Otomatis masuk ke Rincian Kendaraan):
+                + Input Rincian Nopol Luar Gianyar (Otomatis masuk ke Rincian Kendaraan):
               </span>
               <div className="grid grid-cols-1 sm:grid-cols-12 gap-2 items-end">
                 <div className="sm:col-span-3">
@@ -508,10 +508,10 @@ export const TransactionModal: React.FC<TransactionModalProps> = ({
               </div>
             </div>
 
-            {/* Added Luar Bangli Vehicles Badge List */}
+            {/* Added Luar Gianyar Vehicles Badge List */}
             {luarVehicles.length > 0 && (
               <div className="bg-amber-100/60 p-2.5 rounded-lg border border-amber-200 space-y-1.5">
-                <span className="text-[11px] font-bold text-amber-900 block">Daftar Nopol Luar Bangli Terdaftar:</span>
+                <span className="text-[11px] font-bold text-amber-900 block">Daftar Nopol Luar Gianyar Terdaftar:</span>
                 <div className="flex flex-wrap gap-2 max-h-32 overflow-y-auto p-1">
                   {luarVehicles.map((item) => (
                     <div key={item.id} className="inline-flex items-center gap-1.5 bg-white border border-amber-300 px-2.5 py-1 rounded-md text-xs shadow-2xs">
@@ -537,7 +537,7 @@ export const TransactionModal: React.FC<TransactionModalProps> = ({
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
               <div>
                 <label className="block text-xs font-semibold text-slate-700 mb-1">
-                  Jumlah Nopol Luar Bangli (Unit) *
+                  Jumlah Nopol Luar Gianyar (Unit) *
                 </label>
                 <input
                   type="number"
@@ -552,7 +552,7 @@ export const TransactionModal: React.FC<TransactionModalProps> = ({
 
               <div>
                 <label className="block text-xs font-semibold text-slate-700 mb-1">
-                  Realisasi Nominal Luar Bangli (Rp) *
+                  Realisasi Nominal Luar Gianyar (Rp) *
                 </label>
                 <input
                   type="number"
@@ -587,13 +587,13 @@ export const TransactionModal: React.FC<TransactionModalProps> = ({
 
             <div className="grid grid-cols-3 gap-2 text-center text-xs pt-1">
               <div className="bg-emerald-900/60 p-2 rounded-lg">
-                <span className="text-[10px] text-emerald-300 block">JML BANGLI</span>
+                <span className="text-[10px] text-emerald-300 block">JML GIANYAR</span>
                 <span className="font-bold text-white">{bangliUnitVal} Unit</span>
                 <span className="block text-[11px] text-emerald-200 mt-0.5">{formatRupiah(bangliRpVal)}</span>
               </div>
 
               <div className="bg-emerald-900/60 p-2 rounded-lg">
-                <span className="text-[10px] text-emerald-300 block">JML LUAR BANGLI</span>
+                <span className="text-[10px] text-emerald-300 block">JML LUAR GIANYAR</span>
                 <span className="font-bold text-white">{luarUnitVal} Unit</span>
                 <span className="block text-[11px] text-emerald-200 mt-0.5">{formatRupiah(luarRpVal)}</span>
               </div>

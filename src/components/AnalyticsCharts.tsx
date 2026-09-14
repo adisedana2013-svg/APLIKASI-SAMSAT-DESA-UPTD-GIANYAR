@@ -48,15 +48,15 @@ export const AnalyticsCharts: React.FC<AnalyticsChartsProps> = ({ entries, selec
     return Array.from(map.entries())
       .map(([namaDesa, val]) => ({
         namaDesa,
-        'Bangli (Rp)': val.bangliRp,
-        'Luar Bangli (Rp)': val.luarRp,
+        'Gianyar (Rp)': val.bangliRp,
+        'Luar Gianyar (Rp)': val.luarRp,
         totalRp: val.totalRp,
       }))
       .sort((a, b) => b.totalRp - a.totalRp)
       .slice(0, 10); // Top 10 villages
   }, [filteredEntries]);
 
-  // Bangli vs Luar Bangli Pie Data
+  // Gianyar vs Luar Gianyar Pie Data
   const pieData = useMemo(() => {
     let bangliUnits = 0;
     let luarUnits = 0;
@@ -66,8 +66,8 @@ export const AnalyticsCharts: React.FC<AnalyticsChartsProps> = ({ entries, selec
     });
 
     return [
-      { name: 'Nopol Bangli (P*)', value: bangliUnits, color: '#0284c7' }, // Sky blue
-      { name: 'Nopol Luar Bangli', value: luarUnits, color: '#f59e0b' },  // Amber
+      { name: 'Nopol Gianyar (L*)', value: bangliUnits, color: '#0284c7' }, // Sky blue
+      { name: 'Nopol Luar Gianyar', value: luarUnits, color: '#f59e0b' },  // Amber
     ];
   }, [filteredEntries]);
 
@@ -132,7 +132,7 @@ export const AnalyticsCharts: React.FC<AnalyticsChartsProps> = ({ entries, selec
                 <BarChart3 className="w-4 h-4 text-sky-600" />
                 <span>Realisasi Penerimaan Rp per Kantor Desa (Top 10)</span>
               </h3>
-              <p className="text-xs text-slate-500">Perbandingan penerimaan Nopol Bangli vs Luar Bangli</p>
+              <p className="text-xs text-slate-500">Perbandingan penerimaan Nopol Gianyar vs Luar Gianyar</p>
             </div>
           </div>
 
@@ -148,7 +148,7 @@ export const AnalyticsCharts: React.FC<AnalyticsChartsProps> = ({ entries, selec
                   textAnchor="end"
                 />
                 <YAxis 
-                  tick={{ fontSize: 10, fill: '#64748b' }}
+                  tick={{ fontSize: 10, fill: '#64748b' }} 
                   tickFormatter={(val) => `Rp ${(val / 1000000).toFixed(0)}Jt`}
                 />
                 <Tooltip 
@@ -157,8 +157,8 @@ export const AnalyticsCharts: React.FC<AnalyticsChartsProps> = ({ entries, selec
                   contentStyle={{ borderRadius: '8px', borderColor: '#e2e8f0', fontSize: '12px' }}
                 />
                 <Legend wrapperStyle={{ fontSize: '11px', paddingTop: '10px' }} />
-                <Bar dataKey="Bangli (Rp)" fill="#0284c7" radius={[4, 4, 0, 0]} stackId="a" />
-                <Bar dataKey="Luar Bangli (Rp)" fill="#f59e0b" radius={[4, 4, 0, 0]} stackId="a" />
+                <Bar dataKey="Gianyar (Rp)" fill="#0284c7" radius={[4, 4, 0, 0]} stackId="a" />
+                <Bar dataKey="Luar Gianyar (Rp)" fill="#f59e0b" radius={[4, 4, 0, 0]} stackId="a" />
               </BarChart>
             </ResponsiveContainer>
           </div>
