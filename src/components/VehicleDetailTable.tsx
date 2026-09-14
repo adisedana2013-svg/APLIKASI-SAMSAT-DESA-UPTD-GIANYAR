@@ -37,18 +37,18 @@ export const VehicleDetailTable: React.FC<VehicleDetailTableProps> = ({
         months.add(v.tanggal.substring(0, 7));
       }
     });
-    ['2026-01', '2026-02', '2026-03', '2026-04', '2026-05', '2026-06', '2026-07'].forEach((m) => months.add(m));
     return Array.from(months).sort().reverse();
   }, [vehicles]);
 
   // Form State
-  const [tanggal, setTanggal] = useState('2026-07-30');
-  const [kantorDesa, setKantorDesa] = useState(listKantorDesa[0] || 'Kantor Desa Kubu (Penglipuran)');
+  const todayStr = new Date().toISOString().substring(0, 10);
+  const [tanggal, setTanggal] = useState(todayStr);
+  const [kantorDesa, setKantorDesa] = useState(listKantorDesa[0] || 'Kantor Desa Lebih');
   const [platNomor, setPlatNomor] = useState('DK ');
   const [namaPemilik, setNamaPemilik] = useState('');
   const [jenisKendaraan, setJenisKendaraan] = useState<'R2' | 'R4' | 'R6+'>('R2');
   const [merkModel, setMerkModel] = useState('Honda Vario');
-  const [nominalTotal, setNominalTotal] = useState<number | ''>(850000);
+  const [nominalTotal, setNominalTotal] = useState<number | ''>('');
 
   // Auto detect if Bangli plate
   const isBangliDetected = platNomor.toUpperCase().includes(' P') || platNomor.toUpperCase().endsWith('P');
@@ -217,7 +217,7 @@ export const VehicleDetailTable: React.FC<VehicleDetailTableProps> = ({
                 onChange={(e) => handleMonthChange(e.target.value)}
                 className="bg-transparent font-bold text-slate-900 focus:outline-hidden cursor-pointer"
               >
-                <option value="">Semua Bulan (Jan - Jul 2026)</option>
+                <option value="">Semua Bulan</option>
                 {availableMonths.map((m) => {
                   const [yyyy, mm] = m.split('-');
                   const monthNames = [

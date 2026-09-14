@@ -39,7 +39,7 @@ export const MonthlyRecap: React.FC<MonthlyRecapProps> = ({
   }, [entries]);
 
   // Set default selected month if empty
-  const activeMonth = selectedMonth || (availableMonths.length > 0 ? availableMonths[0] : '2026-07');
+  const activeMonth = selectedMonth || (availableMonths.length > 0 ? availableMonths[0] : new Date().toISOString().substring(0, 7));
 
   // Filter entries for active month
   const monthlyEntries = useMemo(() => {
@@ -203,11 +203,15 @@ export const MonthlyRecap: React.FC<MonthlyRecapProps> = ({
                 onChange={(e) => setSelectedMonth(e.target.value)}
                 className="bg-slate-900 text-amber-300 font-bold text-xs px-3 py-1.5 rounded-lg border border-slate-700 focus:outline-hidden focus:ring-2 focus:ring-amber-500 cursor-pointer"
               >
-                {availableMonths.map((m) => (
-                  <option key={m} value={m}>
-                    {getMonthName(m)}
-                  </option>
-                ))}
+                {availableMonths.length === 0 ? (
+                  <option value={activeMonth}>{getMonthName(activeMonth)}</option>
+                ) : (
+                  availableMonths.map((m) => (
+                    <option key={m} value={m}>
+                      {getMonthName(m)}
+                    </option>
+                  ))
+                )}
               </select>
             </div>
 
@@ -438,13 +442,20 @@ export const MonthlyRecap: React.FC<MonthlyRecapProps> = ({
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-200">
-              {monthByMonthSummary.map((m) => (
-                <tr 
-                  key={m.monthKey} 
-                  className={`hover:bg-amber-50/50 transition-colors ${
-                    m.monthKey === activeMonth ? 'bg-amber-50/70 font-semibold' : ''
-                  }`}
-                >
+              {monthByMonthSummary.length === 0 ? (
+                <tr>
+                  <td colSpan={9} className="px-4 py-8 text-center text-slate-400">
+                    Belum ada data perbandingan bulanan.
+                  </td>
+                </tr>
+              ) : (
+                monthByMonthSummary.map((m) => (
+                  <tr 
+                    key={m.monthKey} 
+                    className={`hover:bg-amber-50/50 transition-colors ${
+                      m.monthKey === activeMonth ? 'bg-amber-50/70 font-semibold' : ''
+                    }`}
+                  >
                   <td className="px-4 py-3 font-bold text-slate-900 flex items-center gap-2">
                     {m.monthKey === activeMonth && (
                       <ChevronRight className="w-4 h-4 text-amber-600" />
@@ -465,7 +476,7 @@ export const MonthlyRecap: React.FC<MonthlyRecapProps> = ({
                     </span>
                   </td>
                 </tr>
-              ))}
+              )))}
             </tbody>
           </table>
         </div>

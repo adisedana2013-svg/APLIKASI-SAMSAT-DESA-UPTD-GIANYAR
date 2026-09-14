@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ViewTab, SamsatDailyEntry, VehicleTransaction } from './types';
-import { 
-  INITIAL_DAILY_ENTRIES, 
-  INITIAL_VEHICLE_TRANSACTIONS, 
-  LIST_KANTOR_DESA 
-} from './data/initialData';
+import { LIST_KANTOR_DESA } from './data/initialData';
 import { ensureCompleteVehicleTransactions } from './utils/vehicleGenerator';
 import { Navbar } from './components/Navbar';
 import { SummaryCards } from './components/SummaryCards';
@@ -17,8 +13,8 @@ import { PrintReportModal } from './components/PrintReportModal';
 import { LoginPage } from './components/LoginPage';
 import { ConfirmModal } from './components/ConfirmModal';
 
-const STORAGE_KEY_ENTRIES = 'samsat_metulung_entries_v3';
-const STORAGE_KEY_VEHICLES = 'samsat_metulung_vehicles_v3';
+const STORAGE_KEY_ENTRIES = 'samsat_desa_gianyar_entries_v3';
+const STORAGE_KEY_VEHICLES = 'samsat_desa_gianyar_vehicles_v3';
 const STORAGE_KEY_AUTH = 'samsat_user_auth_v1';
 
 export default function App() {
@@ -32,6 +28,20 @@ export default function App() {
 
   const [activeTab, setActiveTab] = useState<ViewTab>('harian');
   const [selectedMonth, setSelectedMonth] = useState<string>('');
+
+  // Clear legacy Bangli sample data from previous versions
+  useEffect(() => {
+    try {
+      localStorage.removeItem('samsat_metulung_entries_v3');
+      localStorage.removeItem('samsat_metulung_vehicles_v3');
+      localStorage.removeItem('samsat_desa_gianyar_entries_v1');
+      localStorage.removeItem('samsat_desa_gianyar_vehicles_v1');
+      localStorage.removeItem('samsat_desa_gianyar_entries_v2');
+      localStorage.removeItem('samsat_desa_gianyar_vehicles_v2');
+    } catch (e) {
+      // ignore
+    }
+  }, []);
 
   // Confirmation Modal State
   const [confirmModalState, setConfirmModalState] = useState<{
@@ -72,37 +82,36 @@ export default function App() {
     });
   };
 
-  // Entries State with LocalStorage
+  // Entries State with LocalStorage (empty default)
   const [entries, setEntries] = useState<SamsatDailyEntry[]>(() => {
     try {
       const saved = localStorage.getItem(STORAGE_KEY_ENTRIES);
       if (saved) {
         const parsed = JSON.parse(saved);
-        if (Array.isArray(parsed) && parsed.length >= INITIAL_DAILY_ENTRIES.length) {
+        if (Array.isArray(parsed)) {
           return parsed;
         }
       }
     } catch (e) {
       console.error('Error loading entries from localStorage', e);
     }
-    return INITIAL_DAILY_ENTRIES;
+    return [];
   });
 
-  // Vehicle Transactions State with LocalStorage
+  // Vehicle Transactions State with LocalStorage (empty default)
   const [vehicles, setVehicles] = useState<VehicleTransaction[]>(() => {
-    let baseVehicles: VehicleTransaction[] = INITIAL_VEHICLE_TRANSACTIONS;
     try {
       const saved = localStorage.getItem(STORAGE_KEY_VEHICLES);
       if (saved) {
         const parsed = JSON.parse(saved);
-        if (Array.isArray(parsed) && parsed.length > 0) {
-          baseVehicles = parsed;
+        if (Array.isArray(parsed)) {
+          return parsed;
         }
       }
     } catch (e) {
       console.error('Error loading vehicles from localStorage', e);
     }
-    return ensureCompleteVehicleTransactions(INITIAL_DAILY_ENTRIES, baseVehicles);
+    return [];
   });
 
   // Modals

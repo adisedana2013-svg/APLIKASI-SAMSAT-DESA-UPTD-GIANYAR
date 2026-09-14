@@ -305,7 +305,15 @@ export const DailyTable: React.FC<DailyTableProps> = ({
             {filteredEntries.length === 0 ? (
               <tr>
                 <td colSpan={14} className="px-4 py-12 text-center text-slate-400 bg-slate-50">
-                  Tidak ada data realisasi yang sesuai dengan filter pencarian.
+                  <div className="flex flex-col items-center justify-center gap-2">
+                    <FileText className="w-8 h-8 text-slate-300" />
+                    <span className="font-semibold text-slate-600">
+                      {entries.length === 0 ? 'Belum Ada Data Realisasi Samsat Desa' : 'Tidak ada data realisasi yang sesuai dengan filter pencarian.'}
+                    </span>
+                    <span className="text-xs text-slate-400">
+                      {entries.length === 0 ? 'Silakan klik tombol "+ Input Realisasi Baru" di atas untuk mulai mencatat data transaksi.' : 'Coba ubah kata kunci atau filter pencarian Anda.'}
+                    </span>
+                  </div>
                 </td>
               </tr>
             ) : (

@@ -86,6 +86,27 @@ export const AnalyticsCharts: React.FC<AnalyticsChartsProps> = ({ entries, selec
 
   const PIE_COLORS = ['#0284c7', '#f59e0b'];
 
+  if (filteredEntries.length === 0) {
+    return (
+      <div className="space-y-6 my-6">
+        <div className="bg-white rounded-xl p-5 shadow-sm border border-slate-200">
+          <h2 className="text-xl font-extrabold text-slate-900 flex items-center gap-2">
+            <BarChart3 className="w-6 h-6 text-amber-600" />
+            <span>Visualisasi Grafis Realisasi SAMSAT DESA</span>
+          </h2>
+          <p className="text-xs text-slate-500 mt-1">
+            Analisis perbandingan penerimaan per desa dan tren kegiatan UPTD Pelayanan Pajak Daerah Kab. Gianyar.
+          </p>
+        </div>
+        <div className="bg-white rounded-xl p-12 text-center border border-slate-200 shadow-sm text-slate-400">
+          <BarChart3 className="w-12 h-12 mx-auto text-slate-300 mb-3" />
+          <p className="text-sm font-semibold text-slate-600">Belum Ada Data Realisasi</p>
+          <p className="text-xs text-slate-400 mt-1">Visualisasi grafik akan ditampilkan otomatis setelah ada data realisasi baru yang diinput.</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="space-y-6 my-6">
       

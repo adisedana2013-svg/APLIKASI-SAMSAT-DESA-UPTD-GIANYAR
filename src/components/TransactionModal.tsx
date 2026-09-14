@@ -27,8 +27,9 @@ export const TransactionModal: React.FC<TransactionModalProps> = ({
   initialData,
   listKantorDesa,
 }) => {
-  const [tanggal, setTanggal] = useState('2026-07-30');
-  const [kantorDesa, setKantorDesa] = useState(listKantorDesa[0] || 'Kantor Desa Batur Tengah');
+  const todayStr = new Date().toISOString().substring(0, 10);
+  const [tanggal, setTanggal] = useState(todayStr);
+  const [kantorDesa, setKantorDesa] = useState(listKantorDesa[0] || 'Kantor Desa Lebih');
   const [customDesa, setCustomDesa] = useState('');
   const [isCustomDesa, setIsCustomDesa] = useState(false);
 
@@ -38,24 +39,24 @@ export const TransactionModal: React.FC<TransactionModalProps> = ({
 
   // Form states for adding single vehicle item - Bangli
   const [tempBangliPlat, setTempBangliPlat] = useState('DK ');
-  const [tempBangliRp, setTempBangliRp] = useState<number | ''>(850000);
+  const [tempBangliRp, setTempBangliRp] = useState<number | ''>('');
   const [tempBangliNama, setTempBangliNama] = useState('');
   const [tempBangliJenis, setTempBangliJenis] = useState<'R2' | 'R4' | 'R6+'>('R2');
 
   // Form states for adding single vehicle item - Luar Bangli
   const [tempLuarPlat, setTempLuarPlat] = useState('DK ');
-  const [tempLuarRp, setTempLuarRp] = useState<number | ''>(800000);
+  const [tempLuarRp, setTempLuarRp] = useState<number | ''>('');
   const [tempLuarNama, setTempLuarNama] = useState('');
   const [tempLuarJenis, setTempLuarJenis] = useState<'R2' | 'R4' | 'R6+'>('R2');
 
   // Manual overriding totals if needed
-  const [realisasiBangliNopol, setRealisasiBangliNopol] = useState<number | ''>(10);
-  const [realisasiBangliRp, setRealisasiBangliRp] = useState<number | ''>(8500000);
+  const [realisasiBangliNopol, setRealisasiBangliNopol] = useState<number | ''>(0);
+  const [realisasiBangliRp, setRealisasiBangliRp] = useState<number | ''>(0);
 
-  const [realisasiLuarNopol, setRealisasiLuarNopol] = useState<number | ''>(3);
-  const [realisasiLuarRp, setRealisasiLuarRp] = useState<number | ''>(2400000);
+  const [realisasiLuarNopol, setRealisasiLuarNopol] = useState<number | ''>(0);
+  const [realisasiLuarRp, setRealisasiLuarRp] = useState<number | ''>(0);
 
-  const [petugas, setPetugas] = useState('I Wayan Sudiarta, S.H.');
+  const [petugas, setPetugas] = useState('');
   const [catatan, setCatatan] = useState('');
 
   useEffect(() => {
