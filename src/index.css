@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+@media print {
+  /* Hide backdrop and non-printable elements */
+  body {
+    background: white !important;
+    color: black !important;
+  }
+
+  .no-print,
+  nav,
+  header,
+  footer,
+  button {
+    display: none !important;
+  }
+
+  .printable-area {
+    position: static !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+    overflow: visible !important;
+    background: white !important;
+    color: black !important;
+  }
+
+  /* Force display of table headers on every printed page */
+  thead {
+    display: table-header-group;
+  }
+
+  tr {
+    page-break-inside: avoid;
+  }
+}

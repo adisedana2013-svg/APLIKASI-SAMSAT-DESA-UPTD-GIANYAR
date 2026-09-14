@@ -1,0 +1,6 @@
+{
+  "name": "SAMSAT DESA UPTD Pelayanan Pajak Daerah Kab. Gianyar",
+  "description": "Aplikasi pencatatan dan rekapitulasi harian & bulanan realisasi penerimaan SAMSAT DESA UPTD Pelayanan Pajak Daerah Kab. Gianyar.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
