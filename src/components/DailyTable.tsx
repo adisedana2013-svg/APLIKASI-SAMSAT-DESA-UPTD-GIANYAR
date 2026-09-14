@@ -484,7 +484,7 @@ export const DailyTable: React.FC<DailyTableProps> = ({
       <div className="p-3 bg-slate-50 border-t border-slate-200 text-[11px] text-slate-500 flex flex-wrap justify-between items-center gap-2">
         <span>Menampilkan {filteredEntries.length} dari total {entries.length} entri data.</span>
         <span>
-          Catatan: JML BANGLI &amp; JML LUAR BANGLI dihitung otomatis dari kolom Realisasi Nopol.
+          Catatan: JML GIANYAR &amp; JML LUAR GIANYAR dihitung otomatis dari kolom Realisasi Nopol.
         </span>
       </div>
 

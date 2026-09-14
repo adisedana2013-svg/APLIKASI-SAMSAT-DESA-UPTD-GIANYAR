@@ -158,7 +158,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
       </div>
 
       <footer className="mt-8 text-center text-slate-500 text-xs">
-        <p>&copy; 2026 Badan Pendapatan Daerah Provinsi Bali &bull; Kab. Bangli</p>
+        <p>&copy; 2026 Badan Pendapatan Daerah Provinsi Bali &bull; Kab. Gianyar</p>
         <p className="text-[10px] text-slate-600 mt-0.5">Sistem Terverifikasi &amp; Aman</p>
       </footer>
     </div>
