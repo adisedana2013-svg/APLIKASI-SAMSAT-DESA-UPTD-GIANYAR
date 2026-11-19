@@ -263,7 +263,8 @@ export default function App() {
         realisasiLuarNopol: data.realisasiLuarNopol || 0,
         realisasiLuarRp: data.realisasiLuarRp || 0,
         petugas: data.petugas || 'Petugas Samsat',
-        catatan: data.catatan || ''
+        catatan: data.catatan || '',
+        fotoKegiatan: data.fotoKegiatan || []
       };
       setEntries((prev) => [newEntry, ...prev]);
     }

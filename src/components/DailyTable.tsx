@@ -11,8 +11,10 @@ import {
   Building2, 
   Plus, 
   FileText,
-  ChevronDown
+  ChevronDown,
+  Camera
 } from 'lucide-react';
+import { PhotoViewerModal } from './PhotoViewerModal';
 
 interface DailyTableProps {
   entries: SamsatDailyEntry[];
@@ -35,6 +37,7 @@ export const DailyTable: React.FC<DailyTableProps> = ({
 }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedDesaFilter, setSelectedDesaFilter] = useState('');
+  const [viewingPhotoEntry, setViewingPhotoEntry] = useState<SamsatDailyEntry | null>(null);
 
   // Get available months from entries
   const availableMonths = useMemo(() => {
@@ -271,7 +274,7 @@ export const DailyTable: React.FC<DailyTableProps> = ({
               <th colSpan={2} className="px-3 py-2 border-r border-slate-800 bg-emerald-950 text-emerald-200">
                 TOTAL
               </th>
-              <th rowSpan={2} className="px-3 py-3 w-20 min-w-[80px]">
+              <th rowSpan={2} className="px-3 py-3 w-28 min-w-[104px]">
                 AKSI
               </th>
             </tr>
@@ -403,8 +406,30 @@ export const DailyTable: React.FC<DailyTableProps> = ({
 
                     {/* AKSI */}
                     <td className="px-2 py-2.5 text-center whitespace-nowrap">
-                      <div className="flex items-center justify-center gap-1 opacity-80 group-hover:opacity-100 transition-opacity">
+                      <div className="flex items-center justify-center gap-1 opacity-90 group-hover:opacity-100 transition-opacity">
                         <button
+                          type="button"
+                          onClick={() => setViewingPhotoEntry(entry)}
+                          className={`inline-flex items-center gap-1 px-1.5 py-1 rounded-md transition-colors cursor-pointer ${
+                            entry.fotoKegiatan && entry.fotoKegiatan.length > 0
+                              ? 'text-sky-700 bg-sky-50 hover:bg-sky-100 border border-sky-200'
+                              : 'text-slate-400 hover:text-sky-700 hover:bg-sky-50'
+                          }`}
+                          title={
+                            entry.fotoKegiatan && entry.fotoKegiatan.length > 0
+                              ? `Lihat Foto Kegiatan (${entry.fotoKegiatan.length} foto)`
+                              : 'Lihat / Tambah Foto Kegiatan'
+                          }
+                        >
+                          <Camera className="w-3.5 h-3.5" />
+                          {entry.fotoKegiatan && entry.fotoKegiatan.length > 0 && (
+                            <span className="text-[10px] font-bold leading-none">
+                              {entry.fotoKegiatan.length}
+                            </span>
+                          )}
+                        </button>
+                        <button
+                          type="button"
                           onClick={() => onEditEntry(entry)}
                           className="p-1 rounded-md text-amber-700 hover:text-amber-900 hover:bg-amber-100 transition-colors cursor-pointer"
                           title="Edit Data"
@@ -412,6 +437,7 @@ export const DailyTable: React.FC<DailyTableProps> = ({
                           <Edit3 className="w-3.5 h-3.5" />
                         </button>
                         <button
+                          type="button"
                           onClick={() => onDeleteEntry(entry.id)}
                           className="p-1 rounded-md text-rose-600 hover:text-rose-800 hover:bg-rose-100 transition-colors cursor-pointer"
                           title="Hapus Data"
@@ -488,6 +514,12 @@ export const DailyTable: React.FC<DailyTableProps> = ({
         </span>
       </div>
 
+      <PhotoViewerModal
+        entry={viewingPhotoEntry}
+        isOpen={!!viewingPhotoEntry}
+        onClose={() => setViewingPhotoEntry(null)}
+        onEditPhotos={(entry) => onEditEntry(entry)}
+      />
     </div>
   );
 };
